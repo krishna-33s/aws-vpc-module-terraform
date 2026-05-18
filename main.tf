@@ -23,7 +23,7 @@ resource "aws_subnet" "main" {
   availability_zone = local.zone_names[count.index]
 
   tags =merge(
-    var.common_tags,
+    local.common_tags,
     {
       #roboshop-dev-pubic-us-east-1a
       Name = "${var.project}-${var.env}-${local.zone_names[count.index]}"
