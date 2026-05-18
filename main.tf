@@ -15,3 +15,19 @@ resource "aws_internet_gateway" "gw" {
   tags = local.final_ig_tags
 }
 
+#public subnet
+resource "public_aws_subnet" "main" {
+  count = length(var.cidr_blocks)
+  vpc_id     = aws_vpc.main.id
+  cidr_block = var.cidr_blocks[count.index]
+  availability_zone = local.zone_names[count.index]
+
+  tags =merge(
+    var.common_tags,
+    {
+      #roboshop-dev-pubic-us-east-1a
+      Name = "${var.project}-${var.env}-${local.zone_names[count.index]}"
+    },
+    var.public_subnet_tags
+  )
+}
