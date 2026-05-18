@@ -14,7 +14,7 @@ locals {
     final_ig_tags=merge(
         local.common_tags,
         {
-            Name="${var.project}"-"${var.env}"
+            Name = "${var.project}"-"${var.env}"
         },
         var.ig_tags
     )
