@@ -14,3 +14,4 @@ resource "aws_internet_gateway" "gw" {
 
   tags = local.final_ig_tags
 }
+
