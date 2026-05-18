@@ -11,7 +11,12 @@ variable "cidr"{
     default = "10.0.0.0/16"
 }
 
-variable "tags"{
+variable "vpc_tags"{
+    type = map
+    default ={}
+}
+
+variable "ig_tags"{
     type = map
     default ={}
 }
