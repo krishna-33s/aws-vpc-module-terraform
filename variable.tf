@@ -76,7 +76,7 @@ variable "nat_gateway_tags"{
     default ={}
 }
 
-var "vpc_peering"{
+variable "vpc_peering"{
     type = bool
     default = false
 }
