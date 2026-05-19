@@ -1,5 +1,4 @@
 # vpc creation
-
 resource "aws_vpc" "main" {
   cidr_block       = var.cidr
   instance_tenancy = "default"
@@ -26,7 +25,7 @@ resource "aws_subnet" "main" {
     local.common_tags,
     {
       #roboshop-dev-pubic-us-east-1a
-      Name = "${var.project}-${var.env}-${local.zone_names[count.index]}"
+      Name = "${var.project}-${var.env}-public-${local.zone_names[count.index]}"
     },
     var.public_subnet_tags
   )
