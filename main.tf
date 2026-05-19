@@ -15,10 +15,10 @@ resource "aws_internet_gateway" "gw" {
 }
 
 #public subnet
-resource "aws_subnet" "main" {
+resource "aws_subnet" "public" {
   count = length(var.cidr_blocks)
   vpc_id     = aws_vpc.main.id
-  cidr_block = var.cidr_blocks[count.index]
+  cidr_block = var.public_cidr_blocks[count.index]
   availability_zone = local.zone_names[count.index]
   map_public_ip_on_launch = true
 
@@ -33,12 +33,11 @@ resource "aws_subnet" "main" {
 }
 
 #private subnet
-resource "aws_subnet" "main" {
+resource "aws_subnet" "private" {
   count = length(var.cidr_blocks)
   vpc_id     = aws_vpc.main.id
-  cidr_block = var.cidr_blocks[count.index]
+  cidr_block = var.private_cidr_blocks[count.index]
   availability_zone = local.zone_names[count.index]
-  map_private_ip_on_launch = true
 
   tags =merge(
     local.common_tags,
@@ -51,12 +50,11 @@ resource "aws_subnet" "main" {
 }
 
 #database subnet
-resource "aws_subnet" "main" {
+resource "aws_subnet" "database" {
   count = length(var.cidr_blocks)
   vpc_id     = aws_vpc.main.id
-  cidr_block = var.cidr_blocks[count.index]
+  cidr_block = var.database_cidr_blocks[count.index]
   availability_zone = local.zone_names[count.index]
-  map_database_ip_on_launch = true
 
   tags =merge(
     local.common_tags,

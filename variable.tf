@@ -21,7 +21,7 @@ variable "ig_tags"{
     default ={}
 }
 
-variable "cidr_blocks"{
+variable "public_cidr_blocks"{
     type = list
     default =["10.0.1.0/24", "10.0.11.0/24"]
 }
@@ -31,9 +31,19 @@ variable "public_subnet_tags"{
     default = {}
 }
 
+variable "private_cidr_blocks"{
+    type = list
+    default =["10.0.21.0/24", "10.0.31.0/24"]
+}
+
 variable "private_subnet_tags"{
     type = map
     default = {}
+}
+
+variable "database_cidr_blocks"{
+    type = list
+    default =["10.0.41.0/24", "10.0.51.0/24"]
 }
 
 variable "database_subnet_tags"{
