@@ -6,14 +6,14 @@ output "vpc_id"{
     value = aws_vpc.main.id
 }
 
-output "pubic_subnet"{
-    value = aws_vpc.public[*].id
+output "public_subnet_id"{
+    value = aws_subnet.public[*].id
 }
 
-output "private_subnet"{
-    value = aws_vpc.private[*].id
+output "private_subnet_id"{
+    value = aws_subnet.private[*].id
 }
 
-output "database_subnet"{
-    value = aws_vpc.database[*].id
+output "database_subnet_id"{
+    value = aws_subnet.database[*].id
 }
